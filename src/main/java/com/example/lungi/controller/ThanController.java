@@ -2,6 +2,7 @@ package com.example.lungi.controller;
 
 import com.example.lungi.model.Than;
 import com.example.lungi.payload.request.PaymentRequest;
+import com.example.lungi.payload.response.AuthMessage;
 import com.example.lungi.service.ThanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,5 +41,12 @@ public class ThanController {
     public ResponseEntity<Than> payAmount(@PathVariable Long id, @RequestBody PaymentRequest paymentRequest) {
         return ResponseEntity.ok().body(service.payAmount(id, paymentRequest));
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<AuthMessage> deleteById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.deleteById(id));
+    }
+
 
 }

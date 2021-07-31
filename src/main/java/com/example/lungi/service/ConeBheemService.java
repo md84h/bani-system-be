@@ -2,6 +2,7 @@ package com.example.lungi.service;
 
 import com.example.lungi.exception.ConeBheemNotFoundException;
 import com.example.lungi.model.ConeBheem;
+import com.example.lungi.payload.response.AuthMessage;
 import com.example.lungi.payload.response.ConeBheemResponse;
 import com.example.lungi.repository.ConeBheemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,16 @@ public class ConeBheemService {
         com.example.lungi.model.ConeBheem coneBheem = repository.findById(id).get();
         coneBheem.setStatus(status);
         return repository.save(coneBheem);
+    }
+
+    public AuthMessage deleteById(Long id) {
+        Optional<ConeBheem> coneBheem = repository.findById(id);
+        if (coneBheem.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new ConeBheemNotFoundException();
+        }
+        AuthMessage message = new AuthMessage("Deleted Successfully");
+        return message;
     }
 }
