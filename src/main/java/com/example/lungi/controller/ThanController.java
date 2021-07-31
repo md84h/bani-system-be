@@ -23,7 +23,7 @@ public class ThanController {
         return ResponseEntity.ok().body(service.getDetailsByEmployeeId(id));
     }
 
-    @PostMapping("/")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Than> createDetails(@RequestBody Than than) {
         return ResponseEntity.ok().body(service.createDetails(than));
