@@ -2,6 +2,8 @@ package com.example.lungi.service;
 
 import com.example.lungi.exception.ConeBheemNotFoundException;
 import com.example.lungi.model.Than;
+import com.example.lungi.payload.request.MultiplePaymentRequest;
+import com.example.lungi.payload.request.PaymentDetails;
 import com.example.lungi.payload.request.PaymentRequest;
 import com.example.lungi.payload.response.AuthMessage;
 import com.example.lungi.repository.ThanRepository;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +55,29 @@ public class ThanService {
         } else {
             throw new ConeBheemNotFoundException();
         }
+    }
+
+    public AuthMessage payMultipleAmount(MultiplePaymentRequest multiplePaymentRequest) {
+        List<PaymentDetails> paymentRequestList = multiplePaymentRequest.getList();
+        Date date = multiplePaymentRequest.getPaymentDate();
+        String comment = multiplePaymentRequest.getComment();
+        for (PaymentDetails details: paymentRequestList) {
+            Long id = details.getId();
+            Optional<Than> thanOptional = repository.findById(id);
+            if(thanOptional.isPresent()) {
+                Than than = repository.getById(id);
+                than.setComputedAmount(details.getComputedAmount());
+                than.setTotalAmount(details.getTotalAmount());
+                than.setPaymentDate(date);
+                than.setStatus("DONE");
+                than.setComment(comment);
+                repository.save(than);
+            } else {
+                throw new ConeBheemNotFoundException();
+            }
+        }
+        AuthMessage message = new AuthMessage("Payment added Successfully");
+        return message;
     }
 
     public AuthMessage deleteById(Long id) {

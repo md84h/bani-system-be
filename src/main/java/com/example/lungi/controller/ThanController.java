@@ -1,6 +1,7 @@
 package com.example.lungi.controller;
 
 import com.example.lungi.model.Than;
+import com.example.lungi.payload.request.MultiplePaymentRequest;
 import com.example.lungi.payload.request.PaymentRequest;
 import com.example.lungi.payload.response.AuthMessage;
 import com.example.lungi.service.ThanService;
@@ -40,6 +41,12 @@ public class ThanController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Than> payAmount(@PathVariable Long id, @RequestBody PaymentRequest paymentRequest) {
         return ResponseEntity.ok().body(service.payAmount(id, paymentRequest));
+    }
+
+    @PostMapping("/pay")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<AuthMessage> payMultipleAmount(@RequestBody MultiplePaymentRequest multiplePaymentRequest) {
+        return ResponseEntity.ok().body(service.payMultipleAmount(multiplePaymentRequest));
     }
 
     @DeleteMapping("/{id}")
