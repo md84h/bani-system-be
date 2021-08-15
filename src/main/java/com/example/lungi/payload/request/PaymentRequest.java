@@ -16,4 +16,5 @@ public class PaymentRequest {
     private Date paymentDate;
     private String status;
     private String comment;
+    private Long cutPiece;
 }

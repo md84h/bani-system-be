@@ -50,6 +50,7 @@ public class ThanService {
             than.setPaymentDate(paymentRequest.getPaymentDate());
             than.setStatus(paymentRequest.getStatus());
             than.setComment(paymentRequest.getComment());
+            than.setCutPiece(paymentRequest.getCutPiece());
 
             return repository.save(than);
         } else {
@@ -71,6 +72,7 @@ public class ThanService {
                 than.setPaymentDate(date);
                 than.setStatus("DONE");
                 than.setComment(comment);
+                than.setCutPiece(details.getCutPiece());
                 repository.save(than);
             } else {
                 throw new ConeBheemNotFoundException();

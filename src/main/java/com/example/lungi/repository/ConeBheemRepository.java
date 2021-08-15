@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface ConeBheemRepository extends JpaRepository<ConeBheem, Long> {
@@ -13,4 +14,7 @@ public interface ConeBheemRepository extends JpaRepository<ConeBheem, Long> {
 
     @Query("select p from ConeBheem as p where employee_id = :id and product = :product and type = :type order by p.date desc ")
     List<ConeBheem> findByEmployeeIdByProductByType(@Param("id") Long id, @Param("product") String product, @Param("type") String type);
+
+    @Query("select p from ConeBheem as p where employee_id = :id and date between :startDate and :endDate")
+    List<ConeBheem> findByEmployeeIdInDateRange(@Param("id") Long id, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

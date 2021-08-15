@@ -16,7 +16,7 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository repository;
     public List<Employee> getEmployeeList() {
-        return repository.findAll();
+        return repository.getByOrder();
     }
 
     public Optional<Employee> getEmployeeById(Long id) {
@@ -40,6 +40,7 @@ public class EmployeeService {
         if (alreadyExist) {
             throw new EmployeeAlreadyExistException(employee.getName());
         } else {
+            employee.setOrder(100);
             return repository.save(employee);
         }
     }

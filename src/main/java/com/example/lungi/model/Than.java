@@ -49,4 +49,7 @@ public class Than {
 
     @Column(name = "comment")
     private String comment;
+
+    @Column(name = "cut_piece")
+    private Long cutPiece;
 }

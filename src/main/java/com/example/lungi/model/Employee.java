@@ -21,4 +21,7 @@ public class Employee {
 
     @Column(name = "mobile")
     private long mobile;
+
+    @Column(name = "order")
+    private long order;
 }

@@ -4,13 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentDetails {
-    private Long id;
-    private Double computedAmount;
-    private Double totalAmount;
-    private Long cutPiece;
+public class OverallDetailsRequest {
+    public Long employeeId;
+
+    public Date startDate;
+
+    public Date endDate;
 
 }
