@@ -20,6 +20,8 @@ public class OverallDetailsResponse {
 
     public Long totalLungiBheem;
 
+    public Double totalLungiBheemAmount;
+
     public Long totalLungiCone;
 
     public Double totalLungiConeWeight;
@@ -71,4 +73,6 @@ public class OverallDetailsResponse {
     public Date startDate;
 
     public Date endDate;
+
+    public Double totalBheemAmount;
 }

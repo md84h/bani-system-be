@@ -62,15 +62,13 @@ public class OverallDetailsService {
             }
         }
         Long totalLungi = totalThan * 11 + extraLungi;
-        Double totalLungiAmount = totalLungi * 13.0;
+        Double totalLungiAmount = totalLungi * 14.0;
         Double totalLungiCutPieceAmount = totalLungiCutPiece * 50.0;
-        Double pendingLungiAmount = totalLungiAmount - paidLungiAmount - totalLungiCutPieceAmount;
-        Double totalChaukaAmount = totalChauka * 18.0;
-        Double totalChaukaCutPieceAmount = totalChaukaCutPiece * 50.0;
+        Double totalChaukaAmount = totalChauka * 19.0;
+        Double totalChaukaCutPieceAmount = totalChaukaCutPiece * 70.0;
         Double pendingChaukaAmount = totalChaukaAmount - paidChaukaAmount - totalChaukaCutPieceAmount;
         Double totalAmount = totalLungiAmount + totalChaukaAmount;
         Double totalPaidAmount = paidLungiAmount + paidChaukaAmount;
-        Double totalPendingAmount = pendingLungiAmount + pendingChaukaAmount;
         Double totalCutPieceAmount = totalChaukaCutPieceAmount + totalLungiCutPieceAmount;
 
         Long totalLungiCone = new Long(0);
@@ -106,6 +104,9 @@ public class OverallDetailsService {
                 }
             }
         }
+        Double totalLungiBheemAmount = totalLungiBheem * 200.0;
+        Double pendingLungiAmount = totalLungiAmount - paidLungiAmount - totalLungiCutPieceAmount - totalLungiBheemAmount;
+        Double totalPendingAmount = pendingLungiAmount + pendingChaukaAmount;
 
         OverallDetailsResponse response = new OverallDetailsResponse();
 
@@ -115,6 +116,7 @@ public class OverallDetailsService {
         response.setExtraLungi(extraLungi);
         response.setTotalLungi(totalLungi);
         response.setTotalLungiBheem(totalLungiBheem);
+        response.setTotalLungiBheemAmount(totalLungiBheemAmount);
         response.setTotalLungiCone(totalLungiCone);
         response.setTotalLungiConeWeight(totalLungiConeWeight);
         response.setTotalLungiBheemLength(totalLungiBheemLength);
@@ -141,6 +143,7 @@ public class OverallDetailsService {
         response.setTotalPaidAmount(totalPaidAmount);
         response.setTotalCutPieceAmount(totalCutPieceAmount);
         response.setTotalPendingAmount(totalPendingAmount);
+        response.setTotalBheemAmount(totalLungiBheemAmount);
 
         response.setStartDate(request.getStartDate());
         response.setEndDate(request.getEndDate());
