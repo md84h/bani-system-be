@@ -22,6 +22,9 @@ public class Employee {
     @Column(name = "mobile")
     private long mobile;
 
-    @Column(name = "order")
-    private long order;
+    @Column(name = "employee_order")
+    private long employeeOrder;
+
+    @Column(name = "feature_type")
+    private String featureType;
 }

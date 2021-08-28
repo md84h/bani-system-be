@@ -22,6 +22,12 @@ public class EmployeeController {
         return ResponseEntity.ok().body(service.getEmployeeList());
     }
 
+    @GetMapping("/employee/credit-debit")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<Employee>> getCreditDebitEmployees() {
+        return ResponseEntity.ok().body(service.getCreditDebitEmployees());
+    }
+
     @GetMapping("/employee/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Optional<Employee>> getEmployeeBYId(@PathVariable Long id) {

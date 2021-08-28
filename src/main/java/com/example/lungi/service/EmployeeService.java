@@ -19,6 +19,10 @@ public class EmployeeService {
         return repository.getByOrder();
     }
 
+    public List<Employee> getCreditDebitEmployees() {
+        return repository.getCreditDebitEmployeeByOrder();
+    }
+
     public Optional<Employee> getEmployeeById(Long id) {
         Optional<Employee> employee = repository.findById(id);
         if (employee.isPresent()) {
@@ -40,7 +44,7 @@ public class EmployeeService {
         if (alreadyExist) {
             throw new EmployeeAlreadyExistException(employee.getName());
         } else {
-            employee.setOrder(100);
+            employee.setEmployeeOrder(100);
             return repository.save(employee);
         }
     }
