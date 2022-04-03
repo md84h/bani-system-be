@@ -63,9 +63,9 @@ public class OverallDetailsService {
         }
         Long totalLungi = totalThan * 11 + extraLungi;
         Double totalLungiAmount = totalLungi * 14.0;
-        Double totalLungiCutPieceAmount = totalLungiCutPiece * 50.0;
+        Double totalLungiCutPieceAmount = totalLungiCutPiece * 55.0;
         Double totalChaukaAmount = totalChauka * 19.0;
-        Double totalChaukaCutPieceAmount = totalChaukaCutPiece * 70.0;
+        Double totalChaukaCutPieceAmount = totalChaukaCutPiece * 75.0;
         Double pendingChaukaAmount = totalChaukaAmount - paidChaukaAmount - totalChaukaCutPieceAmount;
         Double totalAmount = totalLungiAmount + totalChaukaAmount;
         Double totalPaidAmount = paidLungiAmount + paidChaukaAmount;
@@ -104,7 +104,7 @@ public class OverallDetailsService {
                 }
             }
         }
-        Double totalLungiBheemAmount = totalLungiBheem * 200.0;
+        Double totalLungiBheemAmount = totalLungiBheem * 250.0;
         Double pendingLungiAmount = totalLungiAmount - paidLungiAmount - totalLungiCutPieceAmount - totalLungiBheemAmount;
         Double totalPendingAmount = pendingLungiAmount + pendingChaukaAmount;
 
